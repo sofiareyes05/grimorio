@@ -1,0 +1,1101 @@
+/* ================= VARIABLES ================= */
+:root {
+  /* Modo Claro (por defecto) */
+  --color-bg-primary: #ffffff; /* Fondo blanco */
+  --color-bg-secondary: #f0f0f0;
+  --color-text-primary: #000000; /* Texto negro */
+  --color-accent: #8b0000;
+  --color-border: #cccccc;
+  --transition-duration: 0.5s;
+}
+
+body.dark-mode {
+  --color-bg-primary: #121212;
+  --color-bg-secondary: #1e1e1e;
+  --color-text-primary: #f0f0f0;
+  --color-accent: #b31414;
+  --color-border: #555555;
+}
+
+/* ================= ESTILOS GENERALES ================= */
+body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+
+  /* en dark sí tendrá imagen */
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Imagen SOLO en modo oscuro */
+body.dark-mode {
+  background-image: url("./imgs/background.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.7);
+}
+
+/* Textos */
+h1,
+h2,
+h3,
+p {
+  color: var(--color-text-primary);
+}
+
+/* =========================== */
+/* HEADER (Configuración y Navegación) */
+/* =========================== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* ocupa todo el ancho */
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  height: 10vh;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+.nav-links a:hover {
+  color: gray;
+}
+
+.config-toggle {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-right: 2rem;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: black;
+}
+
+.icon-btn:hover {
+  color: gray;
+}
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  padding-right: 2rem;
+}
+
+/* Toggle estilo switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 20px;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: black;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+#theme-toggle {
+  /* Botón de configuración Modo Claro/Oscuro */
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--color-accent);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+#theme-toggle:hover {
+  filter: brightness(1.2);
+}
+
+.search-icon {
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* =========================== */
+/* SECCIÓN 1: INICIO / SLOGAN */
+/* =========================== */
+
+.hero-section {
+  text-align: center;
+  padding: 100px 5% 60px; /* deja aire arriba */
+}
+
+.slogan {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--color-text-primary);
+  margin-bottom: 30px;
+}
+
+.section-1 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.section-1-img {
+  width: 40vw; /* controla el tamaño de la imagen */
+  max-width: 90%;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.container-text {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  padding: 20px;
+  line-height: 1.8;
+}
+
+.text1 {
+  font-size: 1.6em;
+  font-weight: 500;
+  color: --color-text-primary;
+  text-align: justify;
+}
+
+.text2 {
+  font-size: 1.5em;
+  font-style: italic;
+  font-weight: bold;
+  margin: 30px 0;
+  color: var(--color-accent);
+}
+
+/* =========================== */
+/* SECCIÓN LIBROS DESTACADOS */
+/* =========================== */
+
+.text2 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 40px 0 20px;
+  color: var(--color-accent);
+}
+
+.contenedor2 {
+  width: 100%;
+  max-width: 100%;
+  background-color: black;
+  padding: 50px 20px 30px;
+  border-radius: 12px;
+  margin: 0 auto 40px;
+  position: relative;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.libros {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  padding: 0 15px;
+  border-radius: 5px;
+}
+
+.imageness {
+  flex: 1 1 250px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.portadas {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.portadas:hover {
+  transform: scale(1.07);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* =========================== */
+/* BOTÓN EXPLORA EL MUSEO */
+/* =========================== */
+.btn-explora {
+  display: inline-block;
+  margin: 40px auto 80px; /* centrado con espacio */
+  padding: 15px 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-accent) 0%, #5a0000 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.btn-explora:hover {
+  background: linear-gradient(135deg, #a60000 0%, var(--color-accent) 100%);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+.btn-explora:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================== */
+/* RESPONSIVE */
+/* =========================== */
+@media (max-width: 768px) {
+  .contenedor2 {
+    flex-direction: column;
+    padding-top: 60px;
+  }
+
+  .imageness {
+    max-width: 80%;
+  }
+
+  .text2 {
+    font-size: 1.5rem;
+  }
+
+  .btn-explora {
+    width: 80%;
+    font-size: 1rem;
+  }
+}
+/* =========================== */
+/* SECCIÓN MULTIMEDIA */
+/* =========================== */
+.multimedia-section {
+  border-radius: 16px;
+  padding: 40px 20px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.multimedia-section h2 {
+  font-size: 3rem;
+  color: black;
+  font-weight: 900;
+  margin-bottom: 30px;
+  text-align: center;
+  text-shadow: white 2px 2px 4px;
+}
+
+/* QUITAMOS el fondo duplicado */
+.multimedia-container {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* QUITAMOS sombras dobles */
+.media-box {
+  background: transparent;
+  padding: 20px 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.media-box h3 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+/* Grid: 2 columnas, 2 filas */
+.grid-4-spaces {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* =========================== */
+/* TARJETAS MULTIMEDIA */
+/* =========================== */
+
+.multimedia-container {
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #000000;
+}
+
+.media-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #fff; /* borde blanco */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.media-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Hover efecto */
+.media-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Corazón arriba a la derecha */
+.heart-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: black;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.heart-btn:hover {
+  background: rgba(139, 0, 0, 0.8);
+  transform: scale(1.2);
+}
+
+/* Corazón activo */
+.heart-btn.liked i {
+  color: #e60023; /* rojo brillante */
+}
+
+/* Ícono Play en el centro */
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.media-card:hover .play-icon {
+  background: rgba(139, 0, 0, 0.9);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Para galería visual ocultamos el botón play */
+.gallery-box .play-icon {
+  display: none;
+}
+/* =========================== */
+/* SECCIÓN DESCUBRE Y SIENTE */
+/* =========================== */
+
+/* Título principal de la sección */
+.discover-section h2.title-main {
+  font-size: 3rem; /* bien grande */
+  color: #000; /* negro puro */
+  font-weight: 900;
+  margin-bottom: 10px;
+  text-align: center;
+  text-shadow: white 2px 2px 4px;
+}
+
+/* Subtítulo debajo */
+.discover-section h2.title-sub {
+  font-size: 1.5rem;
+  color: #000; /* también en negro */
+  font-weight: 500;
+  margin-bottom: 50px;
+  text-align: center;
+  text-shadow: white 2px 2px 4px;
+}
+
+.discover-section {
+  text-align: center;
+  margin: 80px auto;
+}
+
+.discover-section h2 {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.discover-section p {
+  color: #ccc;
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+}
+
+/* Contenedor de las cajas */
+.emotion-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px; /* espacio entre cajas */
+  padding: 2rem;
+}
+
+/* Cada caja */
+.emotion-box {
+  background: black;
+  border-radius: 16px;
+  padding: 20px 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+  color: #fff;
+  max-width: 800px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.emotion-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9);
+}
+
+/* Títulos */
+.emotion-box h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: white;
+}
+
+/* Fila de libros */
+.book-row {
+  display: flex;
+  gap: 15px;
+}
+
+.book-row img {
+  width: 12vw;
+  height: 35vh;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-row img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+}
+
+/* Zigzag */
+.emotion-box.left {
+  align-self: flex-start; /* Alinea a la izquierda */
+}
+
+.emotion-box.right {
+  align-self: flex-end; /* Alinea a la derecha */
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .emotion-box {
+    align-self: center !important; /* Todo al centro en móvil */
+    text-align: center;
+  }
+
+  .book-row {
+    justify-content: center;
+  }
+}
+/* =========================== */
+/* SOBRE NOSOTROS */
+/* =========================== */
+.about-section {
+  text-align: center;
+  margin: 80px auto;
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  color: #000;
+  font-weight: 900;
+  margin-bottom: 50px;
+  text-shadow: white 2px 2px 4px;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 0 2rem;
+}
+
+/* Cajas */
+.about-box {
+  background: #7d3939c4; /* rojo vino */
+  padding: 25px 20px;
+  border-radius: 12px;
+  color: #fff;
+  max-width: 700px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.about-box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+}
+
+/* Encabezado */
+.about-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.about-box h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: black;
+  margin: 0;
+}
+
+.about-box p {
+  font-size: 3;
+  line-height: 1.5;
+  color: white;
+}
+
+/* Zigzag */
+.about-box.left {
+  align-self: flex-start;
+}
+
+.about-box.left p {
+  font-size: 1.6rem;
+}
+
+.about-box.right {
+  align-self: flex-end;
+}
+.about-box.right p {
+  font-size: 1.6rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-box {
+    align-self: center !important;
+    text-align: center;
+  }
+}
+
+/* =========================== */
+/* EQUIPO */
+/* =========================== */
+.team-section {
+  background: #7d3939c4; /* rojo vino semitransparente */
+  padding: 40px 20px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 900px;
+  margin: 60px auto;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+.team-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.team-header img {
+  width: 5vw;
+  height: 6vh;
+}
+
+.team-header h3 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: black;
+  margin: 0;
+}
+
+.team-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.team-member {
+  text-align: center;
+  max-width: 180px;
+}
+
+.team-member img {
+  width: 10vw;
+  height: 30vh;
+  object-fit: cover;
+  border-radius: 40%;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+}
+
+.team-member p {
+  margin-top: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .team-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+}
+
+/* =========================== */
+/* HISTORIA */
+/* =========================== */
+.history-section {
+  display: flex;
+  justify-content: center;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.history-box {
+  background: #895555; /* rojo vino más suave */
+  padding: 30px 25px;
+  border-radius: 16px;
+  max-width: 60vw;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  padding-left: 10rem;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.history-header h3 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: black;
+  margin: 0;
+}
+
+.history-box p {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: justify;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .history-box {
+    padding: 20px;
+    font-size: 1rem;
+  }
+  .history-header h3 {
+    font-size: 1.6rem;
+  }
+}
+
+/* =========================== */
+/* MISIÓN Y VISIÓN */
+/* =========================== */
+.mision-vision-section {
+  display: flex;
+  justify-content: center;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.mision-vision-box {
+  background: #895555; /* mismo estilo vino suave */
+  padding: 30px 25px;
+  border-radius: 16px;
+  max-width: 60vw;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.mision-vision-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-left: 10rem;
+}
+.mision-vision-header i {
+  font-size: 5rem;
+  color: black; /* o blanco si quieres contraste */
+}
+.mision-vision-header h3 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: black;
+  margin: 0;
+}
+
+.mision-vision-box p {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: justify;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mision-vision-box {
+    padding: 20px;
+    font-size: 1rem;
+  }
+  .mision-vision-header h3 {
+    font-size: 1.6rem;
+  }
+}
+
+/* =========================== */
+/* FRASE LOVECRAFT (Nuevo Div) */
+/* =========================== */
+.lovecraft-quote-container {
+  padding: 60px 5%;
+  background-color: var(
+    --color-accent
+  ); /* Usa el color de acento para que resalte */
+  color: white;
+  text-align: center;
+  font-style: italic;
+  font-size: 1.4em;
+  font-weight: 500;
+  margin-bottom: 0; /* Asegura que no haya espacio extra antes del footer */
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.lovecraft-quote {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.5;
+  color: #fff;
+}
+
+/* =========================== */
+/* IMPORTANCIA DE LA LECTURA */
+/* =========================== */
+.importance-section {
+  display: flex;
+  justify-content: center;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.importance-box {
+  background: #895555; /* mismo vino suave */
+  padding: 30px 25px;
+  border-radius: 16px;
+  max-width: 60vw;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  border: 2px solid #3e9fff; /* borde azul como en tu captura */
+}
+
+.importance-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-left: 10rem;
+}
+
+.importance-header img {
+  font-size: 2rem;
+  color: black;
+}
+
+.importance-header h3 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: black;
+  margin: 0;
+}
+
+.importance-box p {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: justify;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .importance-box {
+    padding: 20px;
+    max-width: 90vw;
+  }
+
+  .importance-header h3 {
+    font-size: 1.6rem;
+  }
+
+  .importance-box p {
+    font-size: 1rem;
+  }
+}
+
+/* =========================== */
+/* PIE DE PÁGINA (FOOTER)  */
+/* =========================== */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* cambia de flex-start a center */
+  background: #fdf9f9;
+  padding: 20px 50px;
+  text-align: center;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  flex: 1;
+  text-align: center; /* todos centrados */
+}
+
+.footer-left p {
+  margin: 5px 0; /* espacio entre líneas */
+  color: black;
+}
+
+.footer-center h3 {
+  color: black;
+}
+
+.footer-left {
+  text-align: left;
+  font-size: 14px;
+}
+.footer-left p {
+  color: black;
+}
+
+.footer-center h3,
+.footer-right h3 {
+  margin-bottom: 10px;
+  color: black;
+}
+
+.footer-center ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-center ul li {
+  margin: 5px 0;
+}
+
+.footer-center a {
+  text-decoration: none;
+  color: black;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra título e íconos */
+  text-align: center; /* centra el texto respecto a los íconos */
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  margin: 0 8px;
+  font-size: 60px;
+  color: black;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: gray;
+}
+
+/* =========================== */
+/* RESPONSIVE BÁSICO  */
+/* =========================== */
+@media (max-width: 1000px) {
+  /* En pantallas medianas, 2 columnas para Descubre y Siente */
+  .emotion-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-y-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .logo-y-nav nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .config-toggle {
+    align-self: flex-end;
+  }
+
+  .box-images,
+  .multimedia-container,
+  .team-container,
+  .footer-content,
+  .about-grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .box-image-placeholder,
+  .team-member {
+    width: 100%;
+  }
+
+  /* En pantallas pequeñas, 1 columna para Descubre y Siente */
+  .emotion-container {
+    grid-template-columns: 1fr;
+  }
+}
