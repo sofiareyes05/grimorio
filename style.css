@@ -1062,7 +1062,7 @@ input:checked + .slider:before {
   }
 
   .portadas {
-    width: 20%;
+    width: 100%;
   }
 
   .team-member img {
