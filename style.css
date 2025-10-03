@@ -1047,55 +1047,188 @@ input:checked + .slider:before {
 .social-icons a:hover {
   color: gray;
 }
+/* =========================== */
+/* RESPONSIVE GLOBAL */
+/* =========================== */
 
-/* =========================== */
-/* RESPONSIVE BÁSICO  */
-/* =========================== */
-@media (max-width: 1000px) {
-  /* En pantallas medianas, 2 columnas para Descubre y Siente */
-  .emotion-container {
-    grid-template-columns: repeat(2, 1fr);
+/* 📺 Desktop grande (>=1200px) */
+@media (min-width: 1200px) {
+  .slogan {
+    font-size: 3.5rem;
+  }
+
+  .section-1-img {
+    width: 30vw;
+  }
+
+  .portadas {
+    width: 20%;
+  }
+
+  .team-member img {
+    width: 8vw;
+    height: 25vh;
+  }
+
+  .footer-left p {
+    font-size: 1rem;
   }
 }
 
+/* 💻 Tablets (768px - 1199px) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .slogan {
+    font-size: 2.5rem;
+  }
+
+  .section-1-img {
+    width: 50vw;
+  }
+
+  .portadas {
+    width: 30%;
+  }
+
+  .book-row img {
+    width: 20vw;
+    height: auto;
+  }
+
+  .team-member img {
+    width: 15vw;
+    height: 25vh;
+  }
+
+  .footer {
+    flex-direction: row;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    text-align: center;
+  }
+}
+
+/* 📱 Móviles (<768px) */
 @media (max-width: 768px) {
-  .logo-y-nav {
+  /* HEADER */
+  .header {
     flex-direction: column;
-    align-items: flex-start;
+    height: auto;
+    padding: 15px;
+  }
+
+  .nav-links {
+    position: static; /* quita el absolute */
+    transform: none; /* quita el translate */
+    width: 100%; /* ocupa todo el ancho disponible */
+    flex-wrap: wrap; /* permite que baje si no cabe */
+    justify-content: center; /* centrado */
     gap: 10px;
+    overflow-x: hidden;
   }
 
-  .logo-y-nav nav {
-    display: flex;
+  /* HERO */
+  .slogan {
+    font-size: 1.8rem;
+    padding: 0 10px;
+  }
+
+  .section-1-img {
+    width: 80vw;
+  }
+
+  .text1 {
+    font-size: 1.1rem;
+  }
+
+  .text2 {
+    font-size: 1.3rem;
+  }
+
+  /* LIBROS DESTACADOS */
+  .contenedor2 {
     flex-direction: column;
+    padding: 30px 10px;
   }
 
-  header {
+  .portadas {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  /* MULTIMEDIA */
+  .grid-4-spaces {
+    grid-template-columns: 1fr; /* de 2 a 1 columna */
+  }
+
+  /* DESCUBRE Y SIENTE */
+  .book-row {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
+    align-items: center;
   }
 
-  .config-toggle {
-    align-self: flex-end;
+  .book-row img {
+    width: 70%;
+    height: auto;
   }
 
-  .box-images,
-  .multimedia-container,
-  .team-container,
-  .footer-content,
-  .about-grid {
+  /* SOBRE NOSOTROS */
+  .about-box {
+    max-width: 100%;
+    font-size: 1rem;
+    padding: 15px;
+  }
+
+  .about-box p {
+    font-size: 1rem;
+  }
+
+  /* EQUIPO */
+  .team-container {
     flex-direction: column;
     gap: 20px;
   }
 
-  .box-image-placeholder,
-  .team-member {
-    width: 100%;
+  .team-member img {
+    width: 60vw;
+    height: auto;
   }
 
-  /* En pantallas pequeñas, 1 columna para Descubre y Siente */
-  .emotion-container {
-    grid-template-columns: 1fr;
+  /* HISTORIA / MISIÓN */
+  .history-box,
+  .mision-vision-box,
+  .importance-box {
+    max-width: 95%;
+    padding: 15px;
+  }
+
+  .history-header,
+  .mision-vision-header,
+  .importance-header {
+    padding-left: 0;
+    justify-content: center;
+  }
+
+  /* FOOTER */
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 30px 10px;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    text-align: center;
+  }
+
+  .social-icons a {
+    font-size: 40px;
   }
 }
